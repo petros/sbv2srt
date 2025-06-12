@@ -69,3 +69,6 @@ test.sbv
 test.srt
 *.sbv.bak
 *.srt.bak
+
+# Development stubs
+.homebrew_stubs.rb

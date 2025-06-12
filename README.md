@@ -16,7 +16,13 @@ SBV2SRT is a simple, fast CLI tool that converts YouTube's `.sbv` subtitle forma
 
 ## Installation
 
-### Option 1: Download Pre-built Binary (Recommended)
+### Option 1: Homebrew (macOS/Linux) - Recommended
+
+```bash
+brew install sbv2srt
+```
+
+### Option 2: Download Pre-built Binary
 
 Download the latest binary for your platform from the releases page:
 
@@ -29,7 +35,7 @@ Make the binary executable (macOS/Linux):
 chmod +x sbv2srt_macos
 ```
 
-### Option 2: Build from Source
+### Option 3: Build from Source
 
 If you have Elixir installed, you can build from source:
 
@@ -47,7 +53,7 @@ You can then run it with:
 ./sbv2srt input.sbv output.srt
 ```
 
-### Option 3: Build Standalone Binary
+### Option 4: Build Standalone Binary
 
 To build cross-platform standalone binaries (requires Zig 0.14.0, xz, and 7z):
 
@@ -238,6 +244,23 @@ The project uses Burrito to create self-contained binaries that include:
 - All dependencies
 
 This eliminates the need for users to have Elixir/Erlang installed.
+
+## Distribution
+
+### Homebrew
+
+This package is available via Homebrew. To distribute a new version:
+
+1. **Create a release**:
+   ```bash
+   ./scripts/prepare_release.sh 1.0.0
+   ```
+
+2. **Create GitHub release** with the tagged version
+
+3. **Update Homebrew formula** with new version and SHA256 checksum
+
+See `HOMEBREW_DISTRIBUTION.md` for detailed instructions.
 
 ## Contributing
 
