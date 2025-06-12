@@ -258,7 +258,10 @@ This package is available via Homebrew. To distribute a new version:
 
 2. **Create GitHub release** with the tagged version
 
-3. **Update Homebrew formula** with new version and SHA256 checksum
+3. **Update Homebrew formula** (automated):
+   ```bash
+   ./scripts/update_formula.sh 1.0.0
+   ```
 
 See `HOMEBREW_DISTRIBUTION.md` for detailed instructions.
 

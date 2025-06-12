@@ -36,15 +36,33 @@ This script will:
 5. Publish the release
 
 GitHub will automatically create a source tarball at:
-`https://github.com/[username]/sbv2srt/archive/v1.0.0.tar.gz`
+`https://github.com/petros/sbv2srt/archive/v1.0.0.tar.gz`
 
-### 3. Get SHA256 Checksum
+### 3. Update Homebrew Formula
+
+#### Option A: Automated (Recommended)
+
+Use the provided helper script to automatically update the formula:
+
+```bash
+./scripts/update_formula.sh 1.0.0
+```
+
+This script will:
+- Download the GitHub release tarball
+- Calculate the SHA256 checksum automatically
+- Update the formula with correct version and checksum
+- Optionally test the formula for you
+
+#### Option B: Manual
 
 Calculate the checksum of the source tarball:
 
 ```bash
-curl -L https://github.com/[username]/sbv2srt/archive/v1.0.0.tar.gz | sha256sum
+curl -L https://github.com/petros/sbv2srt/archive/v1.0.0.tar.gz | sha256sum
 ```
+
+Then manually edit `Formula/sbv2srt.rb` with the new version and checksum.
 
 ## Homebrew Formula
 
@@ -52,8 +70,7 @@ curl -L https://github.com/[username]/sbv2srt/archive/v1.0.0.tar.gz | sha256sum
 
 Submit to the main Homebrew repository for maximum visibility:
 
-1. **Update the template**: Edit `Formula/sbv2srt.rb` with:
-   - Your GitHub username
+1. **Update the formula**: Use the automated script or manually edit `Formula/sbv2srt.rb` with:
    - Correct version number
    - Calculated SHA256 checksum
 
@@ -92,7 +109,7 @@ Create your own Homebrew tap for easier maintenance:
    ```bash
    # Repository name must be: homebrew-[tapname]
    # Example: homebrew-tools
-   git clone https://github.com/[username]/homebrew-tools
+   git clone https://github.com/petros/homebrew-tools
    ```
 
 2. **Add formula**:
@@ -106,7 +123,7 @@ Create your own Homebrew tap for easier maintenance:
 
 3. **Users install with**:
    ```bash
-   brew tap [username]/tools
+   brew tap petros/tools
    brew install sbv2srt
    ```
 
@@ -167,9 +184,10 @@ The formula includes a comprehensive test that:
 For new releases:
 
 1. Run the release script: `./scripts/prepare_release.sh 1.1.0`
-2. Update the formula with new version and SHA256
-3. Test the updated formula
-4. Submit PR to homebrew-core (or update your tap)
+2. Create the GitHub release
+3. Update the formula: `./scripts/update_formula.sh 1.1.0`
+4. Test the updated formula
+5. Submit PR to homebrew-core (or update your tap)
 
 ### Security
 

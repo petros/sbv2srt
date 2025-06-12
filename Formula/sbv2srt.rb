@@ -1,10 +1,10 @@
 class Sbv2srt < Formula
   desc "Convert YouTube SBV subtitle files to SRT format"
-  homepage "https://github.com/USERNAME/sbv2srt"
-  url "https://github.com/USERNAME/sbv2srt/archive/refs/tags/v0.1.0.tar.gz"
+  homepage "https://github.com/petros/sbv2srt"
+  url "https://github.com/petros/sbv2srt/archive/refs/tags/v0.1.0.tar.gz"
   sha256 "SHA256_CHECKSUM_HERE"
   license "MIT"
-  head "https://github.com/USERNAME/sbv2srt.git", branch: "main"
+  head "https://github.com/petros/sbv2srt.git", branch: "main"
 
   depends_on "elixir" => :build
 
