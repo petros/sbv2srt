@@ -20,10 +20,25 @@ defmodule Sbv2Srt do
   end
 
   defp format_time(ts) do
+    # Handle both "H:MM:SS.mmm" and "M:SS.mmm" formats
     ts
-    |> String.pad_leading(8, "0")
     |> String.replace(".", ",")
-    |> then(fn t -> if String.length(t) == 8, do: "00:" <> t, else: t end)
+    |> then(fn time_str ->
+      case String.split(time_str, ":") do
+        [minutes, seconds] ->
+          # Format: "M:SS,mmm" -> "00:0M:SS,mmm"
+          padded_minutes = String.pad_leading(minutes, 2, "0")
+          "00:#{padded_minutes}:#{seconds}"
+        
+        [hours, minutes, seconds] ->
+          # Format: "H:MM:SS,mmm" -> "0H:MM:SS,mmm"
+          padded_hours = String.pad_leading(hours, 2, "0")
+          "#{padded_hours}:#{minutes}:#{seconds}"
+        
+        _ ->
+          time_str
+      end
+    end)
   end
 end
 
